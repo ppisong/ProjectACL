@@ -11,7 +11,7 @@ from scapy.all import sniff
 
 
 # 패킷 5개 캡처 후 출력
-sniff(count = 5)
+sniff(count = 5, prn=lambda x: print(x))
 
 # 특정 프로토콜만 캡쳐
 #sniff(filter="tcp",prn=lambda x: print(x))
