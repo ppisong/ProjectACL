@@ -5,6 +5,8 @@ import time
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import requests
+
 
 # 기본 텍스트 위젯
 st.title("Streamlit Basics")
@@ -55,13 +57,13 @@ st.markdown("---")
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
-img_path = BASE_DIR / 'imgs' / '하마.jpg'
+img_path = BASE_DIR / 'imgs' / '하마.png'
 img = Image.open(img_path)
 st.image(img, width=300, caption="하마")
 
 
 # 유튜브 url도 포함 가능
-st.video("https://youtu.be/lhA5uI6yYFY?si=cEXTQcljngcK-7p0")
+st.video("https://www.youtube.com/watch?v=gnmdTgYaa28&list=RDgnmdTgYaa28&start_radio=1")
 
 st.markdown("---")
 
@@ -146,6 +148,29 @@ fig, ax = plt.subplots()
 corr_plot = sns.heatmap(df[["mpg","cylinders", "displacement"]].corr(), annot= True)
 st.pyplot(fig)
 
+# fastAPI와 연결하기
+
+st.markdown("---")
+st.subheader("서버와 통신 테스트")
+
+# 사용자가 입력한 텍스트
+user_msg = st.text_input("FastAPI 서버로 보낼 메시지를 입력하세요:")
+
+# 전송 버튼
+if st.button("서버로 전송"):
+    # 우분투 VM의 IP 주소와 FastAPI 포트(8000)를 적어줍니다.
+    # (예시 IP: 192.168.x.x)
+    fastapi_url = "http://192.168.48.129:8000/api/message"
+
+    # 데이터를 JSON 형태로 묶어서 POST 방식으로 보냅니다.
+    payload = {"message": user_msg}
+    response = requests.post(fastapi_url, json=payload)
+
+    # 서버의 응답을 받아서 화면에 출력합니다.
+    if response.status_code == 200:
+        st.success(f"서버 응답: {response.json()['reply']}")
+    else:
+        st.error("서버 연결 실패!")
 
 
 
