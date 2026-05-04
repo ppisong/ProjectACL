@@ -10,8 +10,8 @@ import requests
 
 
 html_page = """
-<div style="background-color:pink; padding:50px">
-<p style="color:white; font-size:50px">Balloons 버튼을 눌러요!</p>
+<div style="background-color:pink; padding:20px">
+<p style="color:white; font-size:20px">Balloons 버튼을 눌러요!</p>
 </div>
 """
 st.markdown(html_page, unsafe_allow_html=True)
@@ -37,8 +37,8 @@ st.video("https://www.youtube.com/watch?v=gnmdTgYaa28&list=RDgnmdTgYaa28&start_r
 st.markdown("---")
 
 html_page = """
-<div style="background-color:pink; padding:50px">
-<p style="color:white; font-size:50px">Play 버튼을 차례로 눌러요!</p>
+<div style="background-color:pink; padding:20px">
+<p style="color:white; font-size:20px">Play 버튼을 차례로 눌러요!</p>
 </div>
 """
 st.markdown(html_page, unsafe_allow_html=True)
@@ -54,8 +54,8 @@ if st.button("Play2"): # Play2 버튼을 클릭하면
 st.markdown("---")
 
 html_page = """
-<div style="background-color:pink; padding:50px">
-<p style="color:white; font-size:50px">Checkbox 버튼을 눌러요!</p>
+<div style="background-color:pink; padding:20px">
+<p style="color:white; font-size:20px">Checkbox 버튼을 눌러요!</p>
 </div>
 """
 st.markdown(html_page, unsafe_allow_html=True)
